@@ -1,0 +1,18 @@
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'azure-conn'
+    scriptType: 'pscore'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az mysql flexible-server create --location northeurope --resource-group testGroup --name testserver --admin-user dbuser --admin-password 123456789aA# --sku-name Standard_B1ms --tier Burstable --public-access 0.0.0.0 --storage-size 32 --tags "key=env=dev" --version 8.0 --storage-auto-grow Enabled --iops 500'
+
+
+    
+
+
